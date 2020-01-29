@@ -14,6 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.Objects;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class SearchField {
@@ -26,18 +27,22 @@ public class SearchField {
         driver.manage().window().maximize();
         driver.get("http://automationpractice.com/");
         String title = driver.getTitle();
-        assertTrue(title.equals("My Store"));
+        String titleEx1 = "My Store";
+        assertEquals(titleEx1, title);
 
 
        }
-    @Given("Find Printed Chiffon Dress")
+    @Given("Find Evening Dresses")
     public void find_Dress() {
         WebElement Search = driver.findElement(By.name("search_query"));
-        Search.sendKeys("Printed Chiffon Dress");
+        Search.sendKeys("Evening Dresses");
         Search.sendKeys(Keys.ENTER);
         String title = driver.getTitle();
-        assertTrue(title.equals("Search - My Store1"));
-        
+        String titleEx1 = "Search - My Store";
+        assertEquals(titleEx1, title);
+
+  //      String Dress=driver.findElement(By.xpath("//span[@class='cat-name']")).getText();
+  //      System.out.println("Dress");
     }
 
    
@@ -46,9 +51,9 @@ public class SearchField {
         driver.findElement(By.xpath("//input[@id='search_query_top']")).clear();
       driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys("Shirts");
       driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys(Keys.ENTER);
-      String SearchResult;
-        SearchResult = driver.findElement(By.xpath("//input[@id='search_query_top']")).getText();
-        System.out.println("SearchResult");
+//      String SearchResult;
+//        SearchResult = driver.findElement(By.xpath("//input[@id='search_query_top']")).getText();
+//        System.out.println("SearchResult");
       //     assertTrue(Objects.equals(SearchResult, "Shirts"));
 
         driver.quit();
