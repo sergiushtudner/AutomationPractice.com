@@ -17,10 +17,10 @@ import java.util.Objects;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class SearchField {
+public class SearchXSSinj {
     private WebDriver driver;
 
-    @Given("Open site in Google Chrome")
+    @Given("Open site in Google Chrome2")
     public void open_site_in_Google_Chrome() {
         System.setProperty("webdriver.chrome.driver","C:/webdrivers/chromedriver.exe");
         driver = new ChromeDriver();
@@ -31,30 +31,30 @@ public class SearchField {
         assertEquals(titleExp, title);
 
 
-       }
-    @Given("Find Evening Dresses")
-    public void find_Dress() {
+    }
+    @Given("Find XSS injection")
+    public void find_XSS_injection() {
         WebElement Search = driver.findElement(By.name("search_query"));
-        Search.sendKeys("Evening Dresses");
+        Search.sendKeys("<script>alert(\"xss-injection!\")</script>");
         Search.sendKeys(Keys.ENTER);
         String title = driver.getTitle();
         String titleExp = "Search - My Store";
         assertEquals(titleExp, title);
 
-  //      String Dress=driver.findElement(By.xpath("//span[@class='cat-name']")).getText();
-  //      System.out.println("Dress");
+        //      String Dress=driver.findElement(By.xpath("//span[@class='cat-name']")).getText();
+        //      System.out.println("Dress");
     }
 
-   
-    @Given("Find Shirt")
-    public void find_Shirt() {
+/*
+    @Given("Find Shirt2")
+    public void find_Shirt2() {
         driver.findElement(By.xpath("//input[@id='search_query_top']")).clear();
-      driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys("Shirts");
-      driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys(Keys.ENTER);
+        driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys("Shirts");
+        driver.findElement(By.xpath("//input[@id='search_query_top']")).sendKeys(Keys.ENTER);
 //      String SearchResult;
 //        SearchResult = driver.findElement(By.xpath("//input[@id='search_query_top']")).getText();
 //        System.out.println("SearchResult");
-      //     assertTrue(Objects.equals(SearchResult, "Shirts"));
+        //     assertTrue(Objects.equals(SearchResult, "Shirts"));
 
         driver.quit();
         /*
@@ -90,5 +90,6 @@ public class SearchField {
         Email.click();
         Email.sendKeys("test@test.md");
 
-*/
+
 }
+*/
